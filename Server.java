@@ -3,9 +3,9 @@ import java.net.*;//importing networking classes
 class Server {
     public static void main(String argc[]) {
 	    try {
-	        ServerSocket senderSocket = new ServerSocket(2000); // socket for sending data to client
+	                ServerSocket senderSocket = new ServerSocket(2000); // socket for sending data to client
 			System.out.println("Waiting for a client...");
-		    Socket client = senderSocket.accept();//wait for client to connect,which receives data from server
+		        Socket client = senderSocket.accept();//wait for client to connect,which receives data from server
 			System.out.println("Client connected....\nStarting chat.....");
 			PrintWriter outStream = new PrintWriter(client.getOutputStream());//get client's output stream to write
 			BufferedReader outBuffer = new BufferedReader(new InputStreamReader(System.in));//buffer to read from keyboard
@@ -27,24 +27,24 @@ class Server {
 		}
 	}
 	class ClientReceiver extends Thread {//Thread which receives  data from client
-	    Socket clientReceiver; 
+	        Socket clientReceiver; 
 		BufferedReader inBuffer;//buffer to accept data from client
 		String clientInput = "Starting reception from client...";//string storing client input
-	    ClientReceiver(Socket clientSocket) {//constructor
-		    super("ClientReceiver Thread");//initialising thread name
-			clientReceiver = clientSocket;
-			start();//start the thread
+	        ClientReceiver(Socket clientSocket) {//constructor
+	            super("ClientReceiver Thread");//initialising thread name
+		    clientReceiver = clientSocket;
+		    start();//start the thread
 		}
 		public void run() {//thread operations
 		    try {
-			    inBuffer = new BufferedReader(new InputStreamReader(clientReceiver.getInputStream()));//initialise buffer with client's input stream
-				do {
-				    System.out.println("Client: "+clientInput);
-				} while((clientInput = inBuffer.readLine())!="stop");
-				System.out.println("Client disconnected");
-			} catch(Exception e) {
+			inBuffer = new BufferedReader(new InputStreamReader(clientReceiver.getInputStream()));//initialise buffer with client's input stream
+		        do {
+		            System.out.println("Client: "+clientInput);
+			} while((clientInput = inBuffer.readLine())!="stop");
+			System.out.println("Client disconnected");
+		    } catch(Exception e) {
 		        System.out.println("Could not initialise client!");
-			}
+		   }
 		}
-    }
+       }
 }
