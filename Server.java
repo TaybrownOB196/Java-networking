@@ -26,7 +26,7 @@ class Server {
 		    System.out.println("Could not start server!");
 		}
 	}
-	class ClientReceiver extends Thread {//Thread which receives  data from client
+	static class ClientReceiver extends Thread {//Thread which receives  data from client
 	        Socket clientReceiver; 
 		BufferedReader inBuffer;//buffer to accept data from client
 		String clientInput = "Starting reception from client...";//string storing client input
