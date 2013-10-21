@@ -22,7 +22,11 @@ class Server {
 			client.close();
 			senderSocket.close();
 			System.out.println("Server disconnected");
-		} catch(Exception e) {
+		}
+		catch(IOException e) {
+			e.PrintStackTrace();
+		}
+		catch(Exception e) {
 		    System.out.println("Could not start server!");
 		}
 	}
@@ -43,7 +47,7 @@ class Server {
 			} while((clientInput = inBuffer.readLine())!="stop");
 			System.out.println("Client disconnected");
 		    } catch(Exception e) {
-		        System.out.println("Could not initialise client!");
+		        System.out.println("Could not initialize client!");
 		   }
 		}
        }
